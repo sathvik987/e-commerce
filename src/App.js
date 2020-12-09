@@ -6,7 +6,7 @@ import Navigation from './components/Navigation/Navigation'
 import LandingPage from './components/LandingPage/LandingPage'
 import Register from './components/Register/Register'
 import Signin from './components/Signin/Signin'
-import Products from './components/Products/Products'
+import ProductsList from './components/Products/ProductsList'
 import Contact from './components/Contact/Contact'
 import Orders from './components/Orders/Orders'
 
@@ -15,7 +15,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      route: "home"
+      route: "home",
+      products: ""
     };
   }
 
@@ -24,7 +25,12 @@ class App extends Component {
     this.setState({ route: route });
   }
 
+  componentDidMount() {
+    fetch('http://localhost:9000/products/getproducts')
+      .then(response => response.json())
+      .then(items => this.setState({ products: items }));
 
+  }
 
   render() {
 
@@ -37,7 +43,7 @@ class App extends Component {
     } else if (this.state.route === 'signin') {
       display = <Signin />
     } else if (this.state.route === 'products') {
-      display = <Products />
+      display = <ProductsList products={this.state.products} />
     }
     else if (this.state.route === 'contact') {
       display = <Contact />

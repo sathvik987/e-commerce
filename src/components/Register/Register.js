@@ -7,7 +7,6 @@ class Register extends React.Component {
     render() {
         return (
             <div>
-                <div className="buffer"></div>
                 <div className="container center_div">
                     <Form>
                         <Form.Group controlId="formBasicEmail">
