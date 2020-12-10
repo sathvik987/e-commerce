@@ -3,6 +3,30 @@ import { Button, Card } from 'react-bootstrap';
 import './Product.css'
 
 class Product extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            buttonText: "Add to cart",
+            color: 'primary',
+            clicked: false
+        }
+    }
+
+    buttonClick = () => {
+        if (this.state.color === 'primary') {
+            this.setState({
+                buttonText: "Remove",
+                color: 'danger',
+                clicked: true
+            })
+        } else {
+            this.setState({
+                buttonText: "Add to cart",
+                color: 'primary',
+                clicked: false
+            })
+        }
+    }
 
     render() {
         return (
@@ -17,7 +41,7 @@ class Product extends React.Component {
                     <Card.Text>
                         ₹ {this.props.price}
                     </Card.Text>
-                    <Button variant="primary">Add to cart</Button>
+                    <Button variant={this.state.color} onClick={this.buttonClick}>  {this.state.buttonText} </Button>
                 </Card.Body>
             </Card>
 

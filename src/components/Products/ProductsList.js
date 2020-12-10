@@ -4,6 +4,11 @@ import './Product.css'
 
 const ProductsList = ({ products }) => {
 
+    if (!products) {
+        return <h1 style={{ textAlign: "center" }}> Loading </h1 >
+    }
+
+
     return (
         <div className="grid-wrapper">
 

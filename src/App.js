@@ -9,6 +9,7 @@ import Signin from './components/Signin/Signin'
 import ProductsList from './components/Products/ProductsList'
 import Contact from './components/Contact/Contact'
 import Orders from './components/Orders/Orders'
+import ProductsNavbar from './components/Products/ProductsNavbar'
 
 class App extends Component {
 
@@ -54,8 +55,9 @@ class App extends Component {
     return (
       <div>
         <Navigation onRouteChange={this.onRouteChange} />
-        <br></br><br></br><br></br>
-        {display}
+        <div className='topPad'>
+          {display}
+        </div>
       </div >
     );
 
