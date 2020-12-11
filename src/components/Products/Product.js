@@ -32,7 +32,7 @@ class Product extends React.Component {
         return (
 
             <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={"http://localhost:9000/" + this.props.image} style={{ height: "16rem" }} className="image" />
+                <Card.Img variant="top" src={"http://localhost:9000/" + this.props.image} className="imgs" />
                 <Card.Body>
                     <Card.Title>{this.props.productname}</Card.Title>
                     <Card.Text style={{ fontSize: "13px" }}>
@@ -40,8 +40,8 @@ class Product extends React.Component {
                     </Card.Text>
                     <Card.Text>
                         ₹ {this.props.price}
+                        <Button className="float-right" variant={this.state.color} onClick={this.buttonClick}>  {this.state.buttonText} </Button>
                     </Card.Text>
-                    <Button variant={this.state.color} onClick={this.buttonClick}>  {this.state.buttonText} </Button>
                 </Card.Body>
             </Card>
 

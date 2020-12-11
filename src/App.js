@@ -32,10 +32,10 @@ class App extends Component {
       .then(items => this.setState({ products: items }));
 
   }
-
   render() {
 
     let display;
+    let pnavbar = "";
 
     if (this.state.route === 'home') {
       display = <LandingPage />
@@ -45,6 +45,7 @@ class App extends Component {
       display = <Signin />
     } else if (this.state.route === 'products') {
       display = <ProductsList products={this.state.products} />
+      pnavbar = <ProductsNavbar />
     }
     else if (this.state.route === 'contact') {
       display = <Contact />
@@ -53,17 +54,18 @@ class App extends Component {
     }
 
     return (
+
       <div>
         <Navigation onRouteChange={this.onRouteChange} />
         <div className='topPad'>
+          {pnavbar}
           {display}
         </div>
       </div >
+
     );
 
   }
-
-
 }
 
 export default App;

@@ -7,10 +7,8 @@
 
 }
 
-.image{
-    transition: all 0.2s;
-}
-
-.image:hover {
-	transform: scale(1.5);
-}
+.imgs {
+    object-fit: fill;
+    width: 17rem;
+    height: 17rem;
+  }
