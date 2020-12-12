@@ -17,10 +17,19 @@ class App extends Component {
     super();
     this.state = {
       route: "home",
-      products: ""
+      products: "",
+      cart: {}
     };
   }
 
+  cartHandler = (val, val2) => {
+    this.setState({
+      cart: {
+        ...this.state.cart,
+        [val]: val2
+      }
+    })
+  }
 
   onRouteChange = (route) => {
     this.setState({ route: route });
@@ -44,7 +53,7 @@ class App extends Component {
     } else if (this.state.route === 'signin') {
       display = <Signin />
     } else if (this.state.route === 'products') {
-      display = <ProductsList products={this.state.products} />
+      display = <ProductsList products={this.state.products} cartHandler={this.cartHandler} />
       pnavbar = <ProductsNavbar />
     }
     else if (this.state.route === 'contact') {

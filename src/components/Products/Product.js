@@ -8,25 +8,9 @@ class Product extends React.Component {
         this.state = {
             buttonText: "Add to cart",
             color: 'primary',
-            clicked: false
         }
     }
 
-    buttonClick = () => {
-        if (this.state.color === 'primary') {
-            this.setState({
-                buttonText: "Remove",
-                color: 'danger',
-                clicked: true
-            })
-        } else {
-            this.setState({
-                buttonText: "Add to cart",
-                color: 'primary',
-                clicked: false
-            })
-        }
-    }
 
     render() {
         return (
@@ -40,7 +24,7 @@ class Product extends React.Component {
                     </Card.Text>
                     <Card.Text>
                         ₹ {this.props.price}
-                        <Button className="float-right" variant={this.state.color} onClick={this.buttonClick}>  {this.state.buttonText} </Button>
+                        <Button className="float-right" variant={this.state.color} onClick={() => this.props.cartHandler(this.props.productname, this.props.price)} >  {this.state.buttonText}  </Button>
                     </Card.Text>
                 </Card.Body>
             </Card>
