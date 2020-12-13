@@ -2,17 +2,13 @@ import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import './Product.css'
 
+
 class Product extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            buttonText: "Add to cart",
-            color: 'primary',
-        }
-    }
 
 
     render() {
+
+
         return (
 
             <Card style={{ width: '18rem' }}>
@@ -24,7 +20,9 @@ class Product extends React.Component {
                     </Card.Text>
                     <Card.Text>
                         ₹ {this.props.price}
-                        <Button className="float-right" variant={this.state.color} onClick={() => this.props.cartHandler(this.props.productname, this.props.price)} >  {this.state.buttonText}  </Button>
+                        <Button className="float-right" variant={this.props.color}
+                            onClick={() => this.props.cartHandler(this.props.productname, this.props.price)} >
+                            {this.props.buttonText}  </Button>
                     </Card.Text>
                 </Card.Body>
             </Card>

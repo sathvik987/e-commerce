@@ -12,12 +12,24 @@ class ProductsList extends React.Component {
             <div className="grid-wrapper" >
 
                 {
-                    this.props.products.map((item, i) => {
-                        return (<Product key={i}
+                    this.props.products.map((item) => {
+
+                        if (item.productname in this.props.cart) {
+                            return (<Product key={item.productname}
+                                productname={item.productname}
+                                description={item.description}
+                                price={item.price}
+                                image={item.image} cartHandler={this.props.cartHandler}
+                                color={"danger"} buttonText={"Remove"} />)
+
+                        }
+                        return (<Product key={item.productname}
                             productname={item.productname}
                             description={item.description}
                             price={item.price}
-                            image={item.image} cartHandler={this.props.cartHandler} />);
+                            image={item.image} cartHandler={this.props.cartHandler}
+                            color={"primary"} buttonText={"Add to cart"} />)
+
                     })
                 }
 

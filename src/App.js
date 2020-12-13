@@ -23,12 +23,20 @@ class App extends Component {
   }
 
   cartHandler = (val, val2) => {
-    this.setState({
-      cart: {
-        ...this.state.cart,
-        [val]: val2
-      }
-    })
+    if (this.state.cart[val]) {
+      let afterDelete = { ...this.state.cart }
+      delete afterDelete[val]
+      this.setState({
+        cart: afterDelete
+      })
+    } else {
+      this.setState({
+        cart: {
+          ...this.state.cart,
+          [val]: val2
+        }
+      })
+    }
   }
 
   onRouteChange = (route) => {
@@ -53,7 +61,7 @@ class App extends Component {
     } else if (this.state.route === 'signin') {
       display = <Signin />
     } else if (this.state.route === 'products') {
-      display = <ProductsList products={this.state.products} cartHandler={this.cartHandler} />
+      display = <ProductsList products={this.state.products} cartHandler={this.cartHandler} cart={this.state.cart} />
       pnavbar = <ProductsNavbar />
     }
     else if (this.state.route === 'contact') {
