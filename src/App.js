@@ -17,8 +17,10 @@ class App extends Component {
     super();
     this.state = {
       route: "home",
-      products: "",
-      cart: {}
+      products: [],
+      cart: {},
+      searchfield: "",
+      searchType: ""
     };
   }
 
@@ -40,6 +42,9 @@ class App extends Component {
   }
 
   onRouteChange = (route) => {
+    if (route === 'products') {
+      this.setState({ searchfield: "" });
+    }
     this.setState({ route: route });
   }
 
@@ -49,10 +54,50 @@ class App extends Component {
       .then(items => this.setState({ products: items }));
 
   }
+  onSearchChange = (event) => {
+    this.setState({ searchfield: event.target.value })
+  }
+
+  onEnter = (event) => {
+    if (event.target.value) {
+      if (event.key === "Enter") {
+        this.setState({ searchfield: event.target.value })
+      }
+    }
+  }
+
+  onpnavbarClick = (type) => {
+    this.setState({ searchType: type, searchfield: "" })
+  }
+
+  defaultsearchType = () => {
+    this.setState({ searchType: "" })
+
+  }
+
+
   render() {
+
+    let filteredProducts = "";
+    if (this.state.searchfield) {
+      filteredProducts = this.state.products.filter(product => {
+        return product.productname.toLowerCase().includes(this.state.searchfield.toLowerCase())
+      })
+    }
+    else if (this.state.searchType) {
+      filteredProducts = this.state.products.filter(product => {
+        return product.type.toLowerCase() === this.state.searchType
+      })
+    } else {
+      filteredProducts = this.state.products
+    }
+
+
+
 
     let display;
     let pnavbar = "";
+
 
     if (this.state.route === 'home') {
       display = <LandingPage />
@@ -61,8 +106,10 @@ class App extends Component {
     } else if (this.state.route === 'signin') {
       display = <Signin />
     } else if (this.state.route === 'products') {
-      display = <ProductsList products={this.state.products} cartHandler={this.cartHandler} cart={this.state.cart} />
-      pnavbar = <ProductsNavbar />
+      display = <ProductsList products={filteredProducts} searchfield={this.state.searchfield}
+        cartHandler={this.cartHandler} cart={this.state.cart} />
+      pnavbar = <ProductsNavbar onpnavbarClick={this.onpnavbarClick}
+        defaultsearchType={this.defaultsearchType} searchfield={this.state.searchfield} />
     }
     else if (this.state.route === 'contact') {
       display = <Contact />
@@ -73,7 +120,7 @@ class App extends Component {
     return (
 
       <div>
-        <Navigation onRouteChange={this.onRouteChange} />
+        <Navigation onRouteChange={this.onRouteChange} onSearchChange={this.onSearchChange} onEnter={this.onEnter} />
         <div className='topPad'>
           {pnavbar}
           {display}

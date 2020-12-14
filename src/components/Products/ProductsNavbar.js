@@ -14,6 +14,9 @@ class ProductsNavbar extends React.Component {
             laptopClass: "",
             headPhoneClass: ""
         }
+
+        this.props.defaultsearchType()
+
     }
 
 
@@ -65,23 +68,47 @@ class ProductsNavbar extends React.Component {
         })
     }
     render() {
+        if (this.props.searchfield) {
+
+            return (
+                <Nav>
+                    <Nav.Item>
+                        <Nav.Link onClick={() => { this.navAll(); this.props.onpnavbarClick("") }}>All</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link onClick={() => { this.navMobile(); this.props.onpnavbarClick("phone") }} > Mobile phones</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link onClick={() => { this.navTablet(); this.props.onpnavbarClick("tablet") }} > Tablets</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link onClick={() => { this.navLaptop(); this.props.onpnavbarClick("laptop") }}>Laptops</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link onClick={() => { this.navHeadphone(); this.props.onpnavbarClick("headphone") }}>Headphones</Nav.Link>
+                    </Nav.Item>
+                </Nav>
+
+            )
+
+        }
 
         return (
             <Nav>
                 <Nav.Item>
-                    <Nav.Link className={this.state.allClass} onClick={this.navAll}>All</Nav.Link>
+                    <Nav.Link className={this.state.allClass} onClick={() => { this.navAll(); this.props.onpnavbarClick("") }}>All</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link className={this.state.mobileClass} onClick={this.navMobile}>Mobile phones</Nav.Link>
+                    <Nav.Link className={this.state.mobileClass} onClick={() => { this.navMobile(); this.props.onpnavbarClick("phone") }} > Mobile phones</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link className={this.state.tabletClass} onClick={this.navTablet}>Tablets</Nav.Link>
+                    <Nav.Link className={this.state.tabletClass} onClick={() => { this.navTablet(); this.props.onpnavbarClick("tablet") }} > Tablets</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link className={this.state.laptopClass} onClick={this.navLaptop}>Laptops</Nav.Link>
+                    <Nav.Link className={this.state.laptopClass} onClick={() => { this.navLaptop(); this.props.onpnavbarClick("laptop") }}>Laptops</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link className={this.state.headPhoneClass} onClick={this.navHeadphone}>Headphones</Nav.Link>
+                    <Nav.Link className={this.state.headPhoneClass} onClick={() => { this.navHeadphone(); this.props.onpnavbarClick("headphone") }}>Headphones</Nav.Link>
                 </Nav.Item>
             </Nav>
 

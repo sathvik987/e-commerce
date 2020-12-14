@@ -1,6 +1,5 @@
 import React from 'react';
-import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
-
+import { Navbar, Nav, FormControl } from 'react-bootstrap';
 
 class Navigationbar extends React.Component {
 
@@ -102,16 +101,17 @@ class Navigationbar extends React.Component {
                         <Nav.Link onClick={() => { this.props.onRouteChange('orders'); this.activeOrders() }} className={this.state.orderClass}>Your orders</Nav.Link>
                         <Nav.Link onClick={() => { this.props.onRouteChange('contact'); this.activeContact() }} className={this.state.contactClass}>Contact</Nav.Link>
                     </Nav>
-                    <Form inline className={this.state.searchClass}>
-                        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                        <Button variant="outline-success">Search</Button>
-                    </Form>
+
+                    <span inline="true" className={this.state.searchClass} >
+                        <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={this.props.onSearchChange} onKeyPress={this.props.onEnter} />
+                    </span>
+
                     <Nav className="mr">
                         <Nav.Link className={this.state.registerClass} onClick={() => { this.props.onRouteChange('register'); this.activeRegister() }}>Register</Nav.Link>
                         <Nav.Link className={this.state.signinClass} onClick={() => { this.props.onRouteChange('signin'); this.activeSignin() }}>Login</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
-            </Navbar>
+            </Navbar >
         )
     }
 }

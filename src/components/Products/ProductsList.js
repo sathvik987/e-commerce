@@ -8,31 +8,42 @@ class ProductsList extends React.Component {
         if (!this.props.products) {
             return <h1 style={{ textAlign: "center" }}> Loading </h1 >
         }
+
+        let display = "";
+        if (this.props.searchfield) {
+            display = <div style={{ textAlign: 'center' }}><h4>Showing results for {this.props.searchfield}</h4></div>
+        } else {
+            display = <div></div>
+        }
+
+
         return (
-            <div className="grid-wrapper" >
+            <div>
+                {display}
+                <div className="grid-wrapper" >
+                    {
+                        this.props.products.map((item) => {
 
-                {
-                    this.props.products.map((item) => {
+                            if (item.productname in this.props.cart) {
+                                return (<Product key={item.productname}
+                                    productname={item.productname}
+                                    description={item.description}
+                                    price={item.price}
+                                    image={item.image} cartHandler={this.props.cartHandler}
+                                    color={"danger"} buttonText={"Remove"} />)
 
-                        if (item.productname in this.props.cart) {
+                            }
                             return (<Product key={item.productname}
                                 productname={item.productname}
                                 description={item.description}
                                 price={item.price}
                                 image={item.image} cartHandler={this.props.cartHandler}
-                                color={"danger"} buttonText={"Remove"} />)
+                                color={"primary"} buttonText={"Add to cart"} />)
 
-                        }
-                        return (<Product key={item.productname}
-                            productname={item.productname}
-                            description={item.description}
-                            price={item.price}
-                            image={item.image} cartHandler={this.props.cartHandler}
-                            color={"primary"} buttonText={"Add to cart"} />)
+                        })
+                    }
 
-                    })
-                }
-
+                </div>
             </div>
         );
     }
