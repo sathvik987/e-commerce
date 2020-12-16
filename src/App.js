@@ -11,17 +11,19 @@ import Contact from './components/Contact/Contact'
 import Orders from './components/Orders/Orders'
 import ProductsNavbar from './components/Products/ProductsNavbar'
 
+const defaultState = {
+  route: "home",
+  products: [],
+  cart: {},
+  searchfield: "",
+  searchType: "",
+  user: ""
+};
 class App extends Component {
 
   constructor() {
     super();
-    this.state = {
-      route: "home",
-      products: [],
-      cart: {},
-      searchfield: "",
-      searchType: ""
-    };
+    this.state = defaultState;
   }
 
   cartHandler = (val, val2) => {
@@ -58,6 +60,12 @@ class App extends Component {
     this.setState({ searchfield: event.target.value })
   }
 
+  loadProducts = () => {
+    fetch('http://localhost:9000/products/getproducts')
+      .then(response => response.json())
+      .then(items => this.setState({ products: items }));
+  }
+
   onEnter = (event) => {
     if (event.target.value) {
       if (event.key === "Enter") {
@@ -73,6 +81,17 @@ class App extends Component {
   defaultsearchType = () => {
     this.setState({ searchType: "" })
 
+  }
+
+  loadUser = (user) => {
+    this.setState({ user: user })
+
+  }
+
+  signOut = () => {
+    this.onRouteChange('home')
+    this.setState(defaultState)
+    this.loadProducts()
   }
 
 
@@ -102,9 +121,9 @@ class App extends Component {
     if (this.state.route === 'home') {
       display = <LandingPage />
     } else if (this.state.route === 'register') {
-      display = <Register />
+      display = <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
     } else if (this.state.route === 'signin') {
-      display = <Signin />
+      display = <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
     } else if (this.state.route === 'products') {
       display = <ProductsList products={filteredProducts} searchfield={this.state.searchfield}
         cartHandler={this.cartHandler} cart={this.state.cart} />
@@ -114,13 +133,14 @@ class App extends Component {
     else if (this.state.route === 'contact') {
       display = <Contact />
     } else if (this.state.route === 'orders') {
-      display = <Orders />
+      display = <Orders user={this.state.user} />
     }
 
     return (
 
       <div>
-        <Navigation onRouteChange={this.onRouteChange} onSearchChange={this.onSearchChange} onEnter={this.onEnter} />
+        <Navigation onRouteChange={this.onRouteChange} onSearchChange={this.onSearchChange} onEnter={this.onEnter}
+          state={this.state.route} user={this.state.user} signOut={this.signOut} />
         <div className='topPad'>
           {pnavbar}
           {display}

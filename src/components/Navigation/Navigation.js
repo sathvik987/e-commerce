@@ -90,6 +90,39 @@ class Navigationbar extends React.Component {
     }
 
     render() {
+
+        if (this.props.state === 'home') {
+            return (
+                <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
+                    <Navbar.Brand >eCommerce</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="mr-auto">
+                            <Nav.Link onClick={() => { this.props.onRouteChange('home'); this.activeHome() }} className="active">Home</Nav.Link>
+                            <Nav.Link onClick={() => { this.props.onRouteChange('products'); this.activeProducts() }} className="">Products</Nav.Link>
+                            <Nav.Link onClick={() => { this.props.onRouteChange('orders'); this.activeOrders() }} className="">Your orders</Nav.Link>
+                            <Nav.Link onClick={() => { this.props.onRouteChange('contact'); this.activeContact() }} className="">Contact</Nav.Link>
+                        </Nav>
+
+                        <span inline="true" className="invisible" >
+                            <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={this.props.onSearchChange} onKeyPress={this.props.onEnter} />
+                        </span>
+                        {this.props.user ? (
+                            <Nav className="mr">
+                                <Nav.Link className="" onClick={this.props.signOut}> Sign out</Nav.Link>
+                            </Nav>
+                        ) : (
+                                <Nav className="mr">
+                                    <Nav.Link className="" onClick={() => { this.props.onRouteChange('register'); this.activeRegister() }}>Register</Nav.Link>
+                                    <Nav.Link className="" onClick={() => { this.props.onRouteChange('signin'); this.activeSignin() }}>Login</Nav.Link>
+                                </Nav>
+                            )
+                        }
+                    </Navbar.Collapse>
+                </Navbar >
+            )
+
+        }
         return (
             <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
                 <Navbar.Brand >eCommerce</Navbar.Brand>
@@ -106,10 +139,17 @@ class Navigationbar extends React.Component {
                         <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={this.props.onSearchChange} onKeyPress={this.props.onEnter} />
                     </span>
 
-                    <Nav className="mr">
-                        <Nav.Link className={this.state.registerClass} onClick={() => { this.props.onRouteChange('register'); this.activeRegister() }}>Register</Nav.Link>
-                        <Nav.Link className={this.state.signinClass} onClick={() => { this.props.onRouteChange('signin'); this.activeSignin() }}>Login</Nav.Link>
-                    </Nav>
+                    {this.props.user ? (
+                        <Nav className="mr">
+                            <Nav.Link className="" onClick={this.props.signOut}>Sign out</Nav.Link>
+                        </Nav>
+                    ) : (
+                            <Nav className="mr">
+                                <Nav.Link className={this.state.registerClass} onClick={() => { this.props.onRouteChange('register'); this.activeRegister() }}>Register</Nav.Link>
+                                <Nav.Link className={this.state.signinClass} onClick={() => { this.props.onRouteChange('signin'); this.activeSignin() }}>Login</Nav.Link>
+                            </Nav>
+                        )
+                    }
                 </Navbar.Collapse>
             </Navbar >
         )
