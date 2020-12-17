@@ -1,5 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, FormControl } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 class Navigationbar extends React.Component {
 
@@ -103,6 +105,10 @@ class Navigationbar extends React.Component {
                             <Nav.Link onClick={() => { this.props.onRouteChange('orders'); this.activeOrders() }} className="">Your orders</Nav.Link>
                             <Nav.Link onClick={() => { this.props.onRouteChange('contact'); this.activeContact() }} className="">Contact</Nav.Link>
                         </Nav>
+                        <span className="mr" style={{ marginRight: 22, color: 'white' }}>
+                            {this.props.cartSize}
+                            <FontAwesomeIcon icon={faShoppingCart} size="lg" />
+                        </span>
 
                         <span inline="true" className="invisible" >
                             <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={this.props.onSearchChange} onKeyPress={this.props.onEnter} />
@@ -134,6 +140,10 @@ class Navigationbar extends React.Component {
                         <Nav.Link onClick={() => { this.props.onRouteChange('orders'); this.activeOrders() }} className={this.state.orderClass}>Your orders</Nav.Link>
                         <Nav.Link onClick={() => { this.props.onRouteChange('contact'); this.activeContact() }} className={this.state.contactClass}>Contact</Nav.Link>
                     </Nav>
+                    <span className="mr" style={{ marginRight: 22, color: 'white' }}>
+                        {this.props.cartSize}
+                        <FontAwesomeIcon icon={faShoppingCart} size="lg" />
+                    </span>
 
                     <span inline="true" className={this.state.searchClass} >
                         <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={this.props.onSearchChange} onKeyPress={this.props.onEnter} />

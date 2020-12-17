@@ -140,7 +140,7 @@ class App extends Component {
 
       <div>
         <Navigation onRouteChange={this.onRouteChange} onSearchChange={this.onSearchChange} onEnter={this.onEnter}
-          state={this.state.route} user={this.state.user} signOut={this.signOut} />
+          state={this.state.route} user={this.state.user} signOut={this.signOut} cartSize={Object.keys(this.state.cart).length} />
         <div className='topPad'>
           {pnavbar}
           {display}
