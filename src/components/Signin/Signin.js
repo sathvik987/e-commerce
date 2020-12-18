@@ -39,7 +39,7 @@ class Signin extends React.Component {
             }).then(res => res.json())
                 .then(user => {
                     if (String(user).includes('worng credentials') || String(user).includes('errorTypeError')) {
-                        alert("Invalid username or password")
+                        alert("Invalid email or password")
                     }
                     if (user.email) {
                         this.props.loadUser(user);

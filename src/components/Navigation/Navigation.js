@@ -106,7 +106,7 @@ class Navigationbar extends React.Component {
                             <Nav.Link onClick={() => { this.props.onRouteChange('contact'); this.activeContact() }} className="">Contact</Nav.Link>
                         </Nav>
                         <span className="mr" style={{ marginRight: 22, color: 'white' }}>
-                            {this.props.cartSize}
+                            <span style={{ marginRight: 3, color: 'white' }}> {this.props.cartSize}</span>
                             <FontAwesomeIcon icon={faShoppingCart} size="lg" />
                         </span>
 
@@ -141,7 +141,7 @@ class Navigationbar extends React.Component {
                         <Nav.Link onClick={() => { this.props.onRouteChange('contact'); this.activeContact() }} className={this.state.contactClass}>Contact</Nav.Link>
                     </Nav>
                     <span className="mr" style={{ marginRight: 22, color: 'white' }}>
-                        {this.props.cartSize}
+                        <span style={{ marginRight: 3, color: 'white' }}> {this.props.cartSize}</span>
                         <FontAwesomeIcon icon={faShoppingCart} size="lg" />
                     </span>
 

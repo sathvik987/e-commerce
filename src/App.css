@@ -1,3 +1,5 @@
 .topPad{
     padding-top: 80px;
 }
+:focus {outline:none;}
+::-moz-focus-inner {border:0;}
