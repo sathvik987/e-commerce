@@ -136,7 +136,8 @@ class App extends Component {
     } else if (this.state.route === 'orders') {
       display = <Orders user={this.state.user} />
     } else if (this.state.route === 'cart') {
-      display = <Cart onRouteChange={this.onRouteChange} cart={this.state.cart} cartSize={Object.keys(this.state.cart).length} />
+      display = <Cart onRouteChange={this.onRouteChange} cart={this.state.cart} cartSize={Object.keys(this.state.cart).length}
+        cartHandler={this.cartHandler} />
     }
 
     return (
