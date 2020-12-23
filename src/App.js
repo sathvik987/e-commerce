@@ -10,6 +10,7 @@ import ProductsList from './components/Products/ProductsList'
 import Contact from './components/Contact/Contact'
 import Orders from './components/Orders/Orders'
 import ProductsNavbar from './components/Products/ProductsNavbar'
+import Cart from "./components/Cart/Cart";
 
 const defaultState = {
   route: "home",
@@ -134,6 +135,8 @@ class App extends Component {
       display = <Contact />
     } else if (this.state.route === 'orders') {
       display = <Orders user={this.state.user} />
+    } else if (this.state.route === 'cart') {
+      display = <Cart onRouteChange={this.onRouteChange} cart={this.state.cart} cartSize={Object.keys(this.state.cart).length} />
     }
 
     return (

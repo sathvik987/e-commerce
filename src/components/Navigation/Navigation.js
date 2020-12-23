@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar, Nav, FormControl } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import './Navigation.css'
 
 class Navigationbar extends React.Component {
 
@@ -91,6 +92,19 @@ class Navigationbar extends React.Component {
 
     }
 
+    activeCart = () => {
+        this.setState({
+            homeClass: "",
+            productClass: "",
+            orderClass: "",
+            contactClass: "",
+            searchClass: "invisible",
+            registerClass: "",
+            signinClass: ""
+        })
+
+    }
+
     render() {
 
         if (this.props.state === 'home') {
@@ -107,7 +121,7 @@ class Navigationbar extends React.Component {
                         </Nav>
                         <span className="mr" style={{ marginRight: 22, color: 'white' }}>
                             <span style={{ marginRight: 3, color: 'white' }}> {this.props.cartSize}</span>
-                            <FontAwesomeIcon icon={faShoppingCart} size="lg" />
+                            <FontAwesomeIcon icon={faShoppingCart} size="lg" className="mouse" onClick={() => { this.props.onRouteChange('cart'); this.activeCart(); }} />
                         </span>
 
                         <span inline="true" className="invisible" >
@@ -142,7 +156,7 @@ class Navigationbar extends React.Component {
                     </Nav>
                     <span className="mr" style={{ marginRight: 22, color: 'white' }}>
                         <span style={{ marginRight: 3, color: 'white' }}> {this.props.cartSize}</span>
-                        <FontAwesomeIcon icon={faShoppingCart} size="lg" />
+                        <FontAwesomeIcon icon={faShoppingCart} size="lg" className="mouse" onClick={() => { this.props.onRouteChange('cart'); this.activeCart(); }} />
                     </span>
 
                     <span inline="true" className={this.state.searchClass} >
