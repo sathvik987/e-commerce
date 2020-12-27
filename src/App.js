@@ -11,6 +11,7 @@ import Contact from './components/Contact/Contact'
 import Orders from './components/Orders/Orders'
 import ProductsNavbar from './components/Products/ProductsNavbar'
 import Cart from "./components/Cart/Cart";
+import Payment from './components/Cart/Payment'
 
 const defaultState = {
   route: "home",
@@ -138,6 +139,8 @@ class App extends Component {
     } else if (this.state.route === 'cart') {
       display = <Cart onRouteChange={this.onRouteChange} cart={this.state.cart} cartSize={Object.keys(this.state.cart).length}
         cartHandler={this.cartHandler} />
+    } else if (this.state.route === 'payment') {
+      display = <Payment user={this.state.user} />
     }
 
     return (

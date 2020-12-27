@@ -29,7 +29,7 @@ class Cart extends React.Component {
 
                                 {
                                     Object.entries(this.props.cart).map(product => {
-                                        return (<tr>
+                                        return (<tr key={product[0]}>
                                             <td>{product[0]} <Button variant="danger" size="sm"
                                                 className="float-right" onClick={() => this.props.cartHandler(product[0], product[1])} >Remove</Button></td>
                                             <td>₹ {product[1]}</td>
@@ -46,7 +46,7 @@ class Cart extends React.Component {
 
                         </Table>
                         <br></br>
-                        <div className="center_div"> <Button variant="info">Proceed to buy </Button> </div>
+                        <div className="center_div"> <Button variant="info" onClick={() => this.props.onRouteChange('payment')}>Proceed to buy </Button> </div>
                     </div>
 
                 ) : (
