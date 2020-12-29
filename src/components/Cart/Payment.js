@@ -4,6 +4,64 @@ import './Cart.css'
 
 class Payment extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: this.props.user.email,
+            name: this.props.user.name,
+            address: {
+                address1: '',
+                address2: '',
+                city: '',
+                state: 'Andhra Pradesh',
+                zip: ''
+            },
+            products: Object.keys(this.props.cart),
+            total: Object.values(this.props.cart).reduce((accumulator, product) => {
+                return accumulator + product;
+            }, 0)
+        }
+    }
+
+    onaddress1Change = (event) => {
+        let address = { ...this.state.address }
+        address.address1 = event.target.value
+        this.setState({ address })
+    }
+
+    onaddress2Change = (event) => {
+        let address = { ...this.state.address }
+        address.address2 = event.target.value
+        this.setState({ address })
+    }
+
+    oncityChange = (event) => {
+        let address = { ...this.state.address }
+        address.city = event.target.value
+        this.setState({ address })
+    }
+
+    onstateChange = (event) => {
+        let address = { ...this.state.address }
+        address.state = event.target.value
+        this.setState({ address })
+    }
+
+    onzipChange = (event) => {
+        let address = { ...this.state.address }
+        address.zip = event.target.value
+        this.setState({ address })
+    }
+
+    onemailChange = (event) => {
+        this.setState({ email: event.target.value })
+    }
+
+    onnameChange = (event) => {
+        this.setState({ name: event.target.value })
+    }
+
+
 
     render() {
 
@@ -14,23 +72,23 @@ class Payment extends React.Component {
                         <Form className='center_div'>
                             <Form.Group controlId="formGridAddress1">
                                 <Form.Label>Address</Form.Label>
-                                <Form.Control placeholder="1234 Main St" />
+                                <Form.Control placeholder="1234 Main St" onChange={this.onaddress1Change} />
                             </Form.Group>
 
                             <Form.Group controlId="formGridAddress2">
                                 <Form.Label>Address 2</Form.Label>
-                                <Form.Control placeholder="Apartment, studio, or floor" />
+                                <Form.Control placeholder="Apartment, studio, or floor" onChange={this.onaddress2Change} />
                             </Form.Group>
 
                             <Form.Row>
-                                <Form.Group as={Col} controlId="formGridCity">
+                                <Form.Group as={Col} controlId="formGridCity" onChange={this.oncityChange} >
                                     <Form.Label>City</Form.Label>
                                     <Form.Control />
                                 </Form.Group>
 
                                 <Form.Group as={Col} controlId="formGridState">
                                     <Form.Label>State</Form.Label>
-                                    <Form.Control as="select" defaultValue="Choose...">
+                                    <Form.Control as="select" defaultValue="Choose..." onChange={this.onstateChange} >
                                         <option value="Andhra Pradesh">Andhra Pradesh</option>
                                         <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                                         <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -70,7 +128,7 @@ class Payment extends React.Component {
                                     </Form.Control>
                                 </Form.Group>
 
-                                <Form.Group as={Col} controlId="formGridZip">
+                                <Form.Group as={Col} controlId="formGridZip" onChange={this.onzipChange} >
                                     <Form.Label>Zip</Form.Label>
                                     <Form.Control />
                                 </Form.Group>
@@ -83,35 +141,35 @@ class Payment extends React.Component {
                     ) : (<Form className='center_div'>
                         <h2 className='center'>Guest Checkout</h2>
                         <Form.Row>
-                            <Form.Group as={Col} controlId="formGridEmail">
+                            <Form.Group as={Col} controlId="formGridEmail" onChange={this.onemailChange} >
                                 <Form.Label>Email</Form.Label>
                                 <Form.Control type="email" placeholder="Enter email" />
                             </Form.Group>
                             <Form.Group as={Col} >
                                 <Form.Label>Name</Form.Label>
-                                <Form.Control type="text" placeholder="Enter name" />
+                                <Form.Control type="text" placeholder="Enter name" onChange={this.onnameChange} />
                             </Form.Group>
                         </Form.Row>
 
                         <Form.Group controlId="formGridAddress1">
                             <Form.Label>Address</Form.Label>
-                            <Form.Control placeholder="1234 Main St" />
+                            <Form.Control placeholder="1234 Main St" onChange={this.onaddress1Change} />
                         </Form.Group>
 
                         <Form.Group controlId="formGridAddress2">
                             <Form.Label>Address 2</Form.Label>
-                            <Form.Control placeholder="Apartment, studio, or floor" />
+                            <Form.Control placeholder="Apartment, studio, or floor" onChange={this.onaddress2Change} />
                         </Form.Group>
 
                         <Form.Row>
-                            <Form.Group as={Col} controlId="formGridCity">
+                            <Form.Group as={Col} controlId="formGridCity" onChange={this.oncityChange} >
                                 <Form.Label>City</Form.Label>
                                 <Form.Control />
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridState">
                                 <Form.Label>State</Form.Label>
-                                <Form.Control as="select" defaultValue="Choose...">
+                                <Form.Control as="select" defaultValue="Choose..." onChange={this.onstateChange} >
                                     <option value="Andhra Pradesh">Andhra Pradesh</option>
                                     <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                                     <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -151,7 +209,7 @@ class Payment extends React.Component {
                                 </Form.Control>
                             </Form.Group>
 
-                            <Form.Group as={Col} controlId="formGridZip">
+                            <Form.Group as={Col} controlId="formGridZip" onChange={this.onzipChange} >
                                 <Form.Label>Zip</Form.Label>
                                 <Form.Control />
                             </Form.Group>
@@ -159,7 +217,7 @@ class Payment extends React.Component {
 
                         <Button variant="primary">
                             Checkout
-                        </Button>
+                    </Button>
                     </Form>)
                 }
             </div>

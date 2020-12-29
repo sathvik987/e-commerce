@@ -7,8 +7,8 @@ class Cart extends React.Component {
 
     render() {
 
-        let total = Object.entries(this.props.cart).reduce((accumulator, product) => {
-            return accumulator + product[1];
+        let total = Object.values(this.props.cart).reduce((accumulator, product) => {
+            return accumulator + product;
         }, 0)
 
 

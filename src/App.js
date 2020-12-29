@@ -140,7 +140,7 @@ class App extends Component {
       display = <Cart onRouteChange={this.onRouteChange} cart={this.state.cart} cartSize={Object.keys(this.state.cart).length}
         cartHandler={this.cartHandler} />
     } else if (this.state.route === 'payment') {
-      display = <Payment user={this.state.user} />
+      display = <Payment user={this.state.user} cart={this.state.cart} />
     }
 
     return (
