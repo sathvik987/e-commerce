@@ -12,6 +12,10 @@ import Orders from './components/Orders/Orders'
 import ProductsNavbar from './components/Products/ProductsNavbar'
 import Cart from "./components/Cart/Cart";
 import Payment from './components/Cart/Payment'
+import { Elements } from '@stripe/react-stripe-js'
+import { loadStripe } from '@stripe/stripe-js'
+
+const stripePromise = loadStripe("pk_test_4sIb1UxpFyHu7svu4XDLa6dA00cGPk08tz")
 
 const defaultState = {
   route: "home",
@@ -145,14 +149,18 @@ class App extends Component {
 
     return (
 
-      <div>
-        <Navigation onRouteChange={this.onRouteChange} onSearchChange={this.onSearchChange} onEnter={this.onEnter}
-          state={this.state.route} user={this.state.user} signOut={this.signOut} cartSize={Object.keys(this.state.cart).length} />
-        <div className='topPad'>
-          {pnavbar}
-          {display}
-        </div>
-      </div >
+      <Elements
+        stripe={stripePromise}
+      >
+        <div>
+          <Navigation onRouteChange={this.onRouteChange} onSearchChange={this.onSearchChange} onEnter={this.onEnter}
+            state={this.state.route} user={this.state.user} signOut={this.signOut} cartSize={Object.keys(this.state.cart).length} />
+          <div className='topPad'>
+            {pnavbar}
+            {display}
+          </div>
+        </div >
+      </Elements>
 
     );
 

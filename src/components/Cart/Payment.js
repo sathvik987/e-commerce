@@ -1,6 +1,8 @@
 import React from 'react';
 import { Col, Form, Button } from 'react-bootstrap';
 import './Cart.css'
+import { CardElement } from '@stripe/react-stripe-js'
+
 
 class Payment extends React.Component {
 
@@ -21,6 +23,12 @@ class Payment extends React.Component {
                 return accumulator + product;
             }, 0)
         }
+    }
+
+    handlePayment = () => {
+
+
+
     }
 
     onaddress1Change = (event) => {
@@ -133,10 +141,6 @@ class Payment extends React.Component {
                                     <Form.Control />
                                 </Form.Group>
                             </Form.Row>
-
-                            <Button variant="primary">
-                                Checkout
-                            </Button>
                         </Form>
                     ) : (<Form className='center_div'>
                         <h2 className='center'>Guest Checkout</h2>
@@ -214,12 +218,26 @@ class Payment extends React.Component {
                                 <Form.Control />
                             </Form.Group>
                         </Form.Row>
-
-                        <Button variant="primary">
-                            Checkout
-                    </Button>
-                    </Form>)
+                    </Form>
+                        )
                 }
+                <div className='center_div'>
+                    <Form.Label>Card details</Form.Label>
+                    <CardElement
+                        options={{
+                            hidePostalCode: true,
+                            style: {
+                                base: {
+                                    fontSize: '15px'
+                                },
+                            },
+                        }} />
+                    <br />
+                    <Button variant="primary" onClick={this.handlePayment} type="button">
+                        Pay
+                    </Button>
+                </div>
+
             </div>
 
         )
