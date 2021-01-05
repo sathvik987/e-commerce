@@ -32,6 +32,10 @@ class App extends Component {
     this.state = defaultState;
   }
 
+  clearCart = () => {
+    this.setState({ cart: {} })
+  }
+
   cartHandler = (val, val2) => {
     if (this.state.cart[val]) {
       let afterDelete = { ...this.state.cart }
@@ -144,7 +148,7 @@ class App extends Component {
       display = <Cart onRouteChange={this.onRouteChange} cart={this.state.cart} cartSize={Object.keys(this.state.cart).length}
         cartHandler={this.cartHandler} />
     } else if (this.state.route === 'payment') {
-      display = <Payment user={this.state.user} cart={this.state.cart} />
+      display = <Payment user={this.state.user} cart={this.state.cart} onRouteChange={this.onRouteChange} clearCart={this.clearCart} />
     }
 
     return (
