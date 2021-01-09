@@ -5,9 +5,6 @@ import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import axios from 'axios'
 
 
-/* const { stripe, elements } = this.props;
-const cardElement = elements.getElement(CardElement); */
-
 
 function Payment(props) {
 
@@ -37,6 +34,21 @@ function Payment(props) {
             return setErrMsg(e.error.message)
         }
         setErrMsg("")
+    }
+
+    const savedOrder = () => {
+        fetch('http://localhost:9000/orders/neworder', {
+            method: 'put',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                email: email,
+                username: name,
+                address: `${address.address1},${address.address2},${address.city},${address.state},${address.zip}`,
+                productnames: products.join(', '),
+                price: total
+
+            })
+        }).then(res => res.json())
     }
 
     const handlePayment = async () => {
@@ -97,13 +109,14 @@ function Payment(props) {
 
             setTimeout(() => {
                 setButtonMsg("Success! Payment is Complete")
+                savedOrder();
             }, 2000)
 
             setTimeout(() => {
-                alert('Thank you for shopping')
+                alert('Thank you for shopping. Your order has been placed.')
                 props.clearCart()
                 props.onRouteChange('home')
-            }, 4000)
+            }, 3000)
         } catch (err) {
 
             setErrMsg(err.message)
