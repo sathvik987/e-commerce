@@ -14,6 +14,7 @@ import Cart from "./components/Cart/Cart";
 import Payment from './components/Cart/Payment'
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
+import { Spinner } from 'react-bootstrap';
 
 const stripePromise = loadStripe("pk_test_4sIb1UxpFyHu7svu4XDLa6dA00cGPk08tz")
 
@@ -153,10 +154,14 @@ class App extends Component {
     } else if (this.state.route === 'signin') {
       display = <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
     } else if (this.state.route === 'products') {
-      display = <ProductsList products={filteredProducts} searchfield={this.state.searchfield}
-        cartHandler={this.cartHandler} cart={this.state.cart} />
-      pnavbar = <ProductsNavbar onpnavbarClick={this.onpnavbarClick}
-        defaultsearchType={this.defaultsearchType} searchfield={this.state.searchfield} />
+      if (this.state.products.length <= 0) {
+        display = <div><h4 style={{ display: 'inline-block' }}>Loading...</h4> <Spinner animation="border" size="sm" /></div>
+      } else {
+        display = <ProductsList products={filteredProducts} searchfield={this.state.searchfield}
+          cartHandler={this.cartHandler} cart={this.state.cart} />
+        pnavbar = <ProductsNavbar onpnavbarClick={this.onpnavbarClick}
+          defaultsearchType={this.defaultsearchType} searchfield={this.state.searchfield} />
+      }
     }
     else if (this.state.route === 'contact') {
       display = <Contact user={this.state.user} onRouteChange={this.onRouteChange} />

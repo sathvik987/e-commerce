@@ -15,7 +15,7 @@ class Cart extends React.Component {
         return (
 
             <div>
-                <h2 className='center'>Cart</h2>
+                <h4 className='center'>Cart</h4>
                 {this.props.cartSize ? (
                     <div>
                         <Table className='center_div'>
