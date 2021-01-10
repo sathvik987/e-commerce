@@ -159,7 +159,7 @@ class App extends Component {
         defaultsearchType={this.defaultsearchType} searchfield={this.state.searchfield} />
     }
     else if (this.state.route === 'contact') {
-      display = <Contact />
+      display = <Contact user={this.state.user} onRouteChange={this.onRouteChange} />
     } else if (this.state.route === 'orders') {
       display = <Orders user={this.state.user} />
     } else if (this.state.route === 'cart') {
