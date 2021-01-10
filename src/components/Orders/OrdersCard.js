@@ -38,7 +38,7 @@ class OrdersCard extends React.Component {
                             <strong>Products:</strong> {this.props.products}
                         </Card.Text>
                         <Card.Text>
-                            <strong>Price:</strong> {this.props.price}
+                            <strong>Price:</strong> ₹ {this.props.price}
                         </Card.Text>
                         <Card.Text>
                             <strong>Address:</strong> {this.props.address}
@@ -57,6 +57,7 @@ class OrdersCard extends React.Component {
                         </div>
                     </Card.Body>
                 </Card>
+                <br />
             </div >
         )
     }

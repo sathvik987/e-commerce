@@ -69,11 +69,11 @@ class Orders extends React.Component {
 
                                                 {
                                                     this.state.ordersObj.map((order) => {
-
+                                                        let d = new Date(order.date);
                                                         return (
                                                             <OrdersCard
                                                                 key={order.date}
-                                                                date={order.date}
+                                                                date={d.toUTCString()}
                                                                 products={order.productnames}
                                                                 price={order.price}
                                                                 address={order.address}

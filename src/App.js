@@ -20,10 +20,10 @@ const stripePromise = loadStripe("pk_test_4sIb1UxpFyHu7svu4XDLa6dA00cGPk08tz")
 const defaultState = {
   route: "home",
   products: [],
-  cart: {},
+  cart: JSON.parse(localStorage.getItem('cart')) || {},
   searchfield: "",
   searchType: "",
-  user: ""
+  user: JSON.parse(localStorage.getItem('user')) || ""
 };
 class App extends Component {
 
@@ -34,6 +34,7 @@ class App extends Component {
 
   clearCart = () => {
     this.setState({ cart: {} })
+    localStorage.removeItem('cart');
   }
 
   cartHandler = (val, val2) => {
@@ -42,6 +43,8 @@ class App extends Component {
       delete afterDelete[val]
       this.setState({
         cart: afterDelete
+      }, function () {
+        localStorage.setItem('cart', JSON.stringify({ ...this.state.cart }));
       })
     } else {
       this.setState({
@@ -49,6 +52,8 @@ class App extends Component {
           ...this.state.cart,
           [val]: val2
         }
+      }, function () {
+        localStorage.setItem('cart', JSON.stringify({ ...this.state.cart }));
       })
     }
   }
@@ -94,13 +99,26 @@ class App extends Component {
   }
 
   loadUser = (user) => {
-    this.setState({ user: user })
-
+    this.setState({ user: user },
+      function () {
+        localStorage.setItem('user', JSON.stringify({ ...this.state.user }));
+      })
   }
 
   signOut = () => {
+    localStorage.removeItem('cart')
+    localStorage.removeItem('user')
     this.onRouteChange('home')
-    this.setState(defaultState)
+    this.setState({
+
+      route: "home",
+      products: [],
+      cart: {},
+      searchfield: "",
+      searchType: "",
+      user: ""
+
+    })
     this.loadProducts()
   }
 
