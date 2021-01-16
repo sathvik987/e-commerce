@@ -318,7 +318,7 @@ function Payment(props) {
             }
             <div className='center_div'>
                 <Form.Label>Card details</Form.Label>
-                <p>{checkoutErrMsg}</p>
+                <p style={{ color: 'red' }}>{checkoutErrMsg}</p>
                 <CardElement
                     options={{
                         hidePostalCode: true,

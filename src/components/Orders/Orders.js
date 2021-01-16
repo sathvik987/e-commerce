@@ -41,7 +41,7 @@ class Orders extends React.Component {
 
         }).then(res => res.json())
             .then(ords => {
-                this.setState({ ordersObj: ords })
+                this.setState({ ordersObj: ords.sort((a, b) => (a.date < b.date) ? 1 : ((b.date < a.date) ? -1 : 0)) })
             })
 
     }
@@ -69,16 +69,16 @@ class Orders extends React.Component {
 
                                                 {
                                                     this.state.ordersObj.map((order) => {
-                                                        let d = new Date(order.date);
                                                         return (
                                                             <OrdersCard
                                                                 key={order.date}
-                                                                date={d.toUTCString()}
+                                                                date={order.date}
                                                                 products={order.productnames}
                                                                 price={order.price}
                                                                 address={order.address}
                                                                 status={order.status}
                                                                 refreshOrders={this.refreshOrders}
+                                                                email={order.email}
                                                             />)
 
                                                     })
@@ -96,7 +96,7 @@ class Orders extends React.Component {
 
                     </div>
                 ) : (
-                        <h4 style={{ textAlign: 'center' }}>Sign in to view your orders</h4>
+                        <h4 style={{ textAlign: 'center' }}>Login to view your orders</h4>
                     )
                 }
             </div>

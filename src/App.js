@@ -155,7 +155,7 @@ class App extends Component {
       display = <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
     } else if (this.state.route === 'products') {
       if (this.state.products.length <= 0) {
-        display = <div><h4 style={{ display: 'inline-block' }}>Loading...</h4> <Spinner animation="border" size="sm" /></div>
+        display = <div style={{ textAlign: 'center' }}><h4 style={{ display: 'inline-block' }}>Loading...</h4> <Spinner animation="border" size="sm" /></div>
       } else {
         display = <ProductsList products={filteredProducts} searchfield={this.state.searchfield}
           cartHandler={this.cartHandler} cart={this.state.cart} />

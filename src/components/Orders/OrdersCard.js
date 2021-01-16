@@ -15,6 +15,7 @@ class OrdersCard extends React.Component {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     date: this.props.date,
+                    email: this.props.email,
                     status: 'Canceled',
                 })
 
@@ -28,11 +29,11 @@ class OrdersCard extends React.Component {
 
     render() {
 
-
+        let d = new Date(this.props.date);
         return (
             <div>
                 <Card>
-                    <Card.Header><strong>Order placed: </strong> {this.props.date}</Card.Header>
+                    <Card.Header><strong>Order placed: </strong> {d.toUTCString()}</Card.Header>
                     <Card.Body>
                         <Card.Text>
                             <strong>Products:</strong> {this.props.products}
