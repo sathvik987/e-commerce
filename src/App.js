@@ -1,4 +1,3 @@
-//import logo from './logo.svg';
 import React, { Component } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -144,11 +143,12 @@ class App extends Component {
 
 
     let display;
+    let home;
     let pnavbar = "";
 
 
     if (this.state.route === 'home') {
-      display = <LandingPage />
+      home = <LandingPage />
     } else if (this.state.route === 'register') {
       display = <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
     } else if (this.state.route === 'signin') {
@@ -182,10 +182,16 @@ class App extends Component {
         <div>
           <Navigation onRouteChange={this.onRouteChange} onSearchChange={this.onSearchChange} onEnter={this.onEnter}
             state={this.state.route} user={this.state.user} signOut={this.signOut} cartSize={Object.keys(this.state.cart).length} />
-          <div className='topPad'>
-            {pnavbar}
-            {display}
-          </div>
+          {this.state.route === 'home' ? (
+            <div>
+              {home}
+            </div>
+          ) : (
+              <div className='topPad'>
+                {pnavbar}
+                {display}
+              </div>
+            )}
         </div >
       </Elements>
 

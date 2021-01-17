@@ -8,7 +8,7 @@
 }
 
 .imgs {
-    object-fit: fill;
+    object-fit: scale-down;
     width: 17rem;
     height: 17rem;
   }

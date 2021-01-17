@@ -52,7 +52,7 @@ function Contact(props) {
 
         props.user ? (
             < div >
-                <h4 style={{ textAlign: 'center' }}>Contact Page</h4>
+                <h4 style={{ textAlign: 'center' }}>Contact form</h4>
                 <Form className='center_div'>
                     <Form.Group controlId="formBasicName">
                         <Form.Label>Name</Form.Label>
@@ -73,7 +73,7 @@ function Contact(props) {
             </div >
         ) : (
                 < div >
-                    <h4 style={{ textAlign: 'center' }}>Contact Page</h4>
+                    <h4 style={{ textAlign: 'center' }}>Contact form</h4>
                     <Form className='center_div'>
                         <Form.Group controlId="formBasicName">
                             <Form.Label>Name</Form.Label>

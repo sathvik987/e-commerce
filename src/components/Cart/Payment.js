@@ -317,7 +317,10 @@ function Payment(props) {
                     )
             }
             <div className='center_div'>
-                <Form.Label>Card details</Form.Label>
+                <Form.Label>Card details  <span className="text-muted" style={{ fontSize: 14 }}>
+                    ( Test card number - 4242 4242 4242 4242 04/24 242 )
+                </span>
+                </Form.Label>
                 <p style={{ color: 'red' }}>{checkoutErrMsg}</p>
                 <CardElement
                     options={{
