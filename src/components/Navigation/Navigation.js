@@ -129,7 +129,7 @@ class Navigationbar extends React.Component {
                         </span>
                         {this.props.user ? (
                             <Nav className="mr">
-                                <Nav.Link className="" onClick={this.props.signOut}> Sign out</Nav.Link>
+                                <Nav.Link className="" onClick={this.props.signOut}>Log out</Nav.Link>
                             </Nav>
                         ) : (
                                 <Nav className="mr">
@@ -165,7 +165,7 @@ class Navigationbar extends React.Component {
 
                     {this.props.user ? (
                         <Nav className="mr">
-                            <Nav.Link className="" onClick={this.props.signOut}>Sign out</Nav.Link>
+                            <Nav.Link className="" onClick={this.props.signOut}>Log out</Nav.Link>
                         </Nav>
                     ) : (
                             <Nav className="mr">
