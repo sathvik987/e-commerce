@@ -10,7 +10,7 @@ class OrdersCard extends React.Component {
 
         let result = window.confirm('Are you sure you want to cancel.?');
         if (result) {
-            fetch('http://localhost:9000/orders/cancelOrder', {
+            fetch('http://localhost:9000/orders/orderstatus', {
                 method: 'put',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -49,7 +49,7 @@ class OrdersCard extends React.Component {
                         </Card.Text>
                         <div>
                             {
-                                this.props.status === "Canceled" ? (
+                                this.props.status === "Canceled" || this.props.status === "Completed" ? (
                                     <div></div>
                                 ) : (
                                         <Button variant="primary" size='sm' onClick={this.cancelOrder}>Cancel</Button>
