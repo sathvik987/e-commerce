@@ -1,8 +1,8 @@
 # E-commerce full stack (MERN) web-application 
 
-Live URL - https://sathvik987.github.io/e-commerce/
-Back-end - https://github.com/sathvik987/e-commerce-back-end
-Admin-panel - https://github.com/sathvik987/e-commerce-admin-panel
+- Live URL - https://sathvik987.github.io/e-commerce/
+- Back-end - https://github.com/sathvik987/e-commerce-back-end
+- Admin-panel - https://github.com/sathvik987/e-commerce-admin-panel
 
 ### Features
 
