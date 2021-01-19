@@ -8,7 +8,7 @@
 
 - Stripe integration to handle visa, mastercard payments.
 - Search engine to search products.
-- View products based on category.
+- Display products by category.
 - User authentication.
 - View previous orders and track order status.
 - Contact form to contact administrators.
