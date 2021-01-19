@@ -29,7 +29,7 @@ function Contact(props) {
     const onSubmit = () => {
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (name && content && re.test(String(email).toLowerCase())) {
-            fetch('http://localhost:9000/contacts/addmessage', {
+            fetch('https://arcane-sea-44247.herokuapp.com/contacts/addmessage', {
                 method: 'put',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

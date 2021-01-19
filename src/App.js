@@ -66,7 +66,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:9000/products/getproducts')
+    fetch('https://arcane-sea-44247.herokuapp.com/products/getproducts')
       .then(response => response.json())
       .then(items => this.setState({ products: items }));
 
@@ -76,7 +76,7 @@ class App extends Component {
   }
 
   loadProducts = () => {
-    fetch('http://localhost:9000/products/getproducts')
+    fetch('https://arcane-sea-44247.herokuapp.com/products/getproducts')
       .then(response => response.json())
       .then(items => this.setState({ products: items }));
   }

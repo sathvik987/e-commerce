@@ -33,7 +33,7 @@ class Register extends React.Component {
 
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (this.state.name && this.state.password && re.test(String(this.state.email).toLowerCase())) {
-            fetch('http://localhost:9000/users/register', {
+            fetch('https://arcane-sea-44247.herokuapp.com/users/register', {
                 method: 'post',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
