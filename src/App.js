@@ -15,7 +15,7 @@ import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 import { Spinner } from 'react-bootstrap';
 
-const stripePromise = loadStripe("pk_test_4sIb1UxpFyHu7svu4XDLa6dA00cGPk08tz")
+const stripePromise = loadStripe("Your api key")
 
 const defaultState = {
   route: "home",
