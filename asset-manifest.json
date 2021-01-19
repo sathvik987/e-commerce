@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/e-commerce/static/css/main.4f3ff044.chunk.css",
+    "main.js": "/e-commerce/static/js/main.23a140e2.chunk.js",
+    "main.js.map": "/e-commerce/static/js/main.23a140e2.chunk.js.map",
+    "runtime-main.js": "/e-commerce/static/js/runtime-main.96190f12.js",
+    "runtime-main.js.map": "/e-commerce/static/js/runtime-main.96190f12.js.map",
+    "static/css/2.1a02f21c.chunk.css": "/e-commerce/static/css/2.1a02f21c.chunk.css",
+    "static/js/2.6f21f4a2.chunk.js": "/e-commerce/static/js/2.6f21f4a2.chunk.js",
+    "static/js/2.6f21f4a2.chunk.js.map": "/e-commerce/static/js/2.6f21f4a2.chunk.js.map",
+    "static/js/3.38a6f5a7.chunk.js": "/e-commerce/static/js/3.38a6f5a7.chunk.js",
+    "static/js/3.38a6f5a7.chunk.js.map": "/e-commerce/static/js/3.38a6f5a7.chunk.js.map",
+    "index.html": "/e-commerce/index.html",
+    "static/css/2.1a02f21c.chunk.css.map": "/e-commerce/static/css/2.1a02f21c.chunk.css.map",
+    "static/css/main.4f3ff044.chunk.css.map": "/e-commerce/static/css/main.4f3ff044.chunk.css.map",
+    "static/js/2.6f21f4a2.chunk.js.LICENSE.txt": "/e-commerce/static/js/2.6f21f4a2.chunk.js.LICENSE.txt",
+    "static/media/Cs.ecc15621.png": "/e-commerce/static/media/Cs.ecc15621.png",
+    "static/media/Delivery 01.8c51d3a4.jpg": "/e-commerce/static/media/Delivery 01.8c51d3a4.jpg",
+    "static/media/Stripe-Logo.93b97666.png": "/e-commerce/static/media/Stripe-Logo.93b97666.png",
+    "static/media/LandingPage.css": "/e-commerce/static/media/office.aba64de9.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.96190f12.js",
+    "static/css/2.1a02f21c.chunk.css",
+    "static/js/2.6f21f4a2.chunk.js",
+    "static/css/main.4f3ff044.chunk.css",
+    "static/js/main.23a140e2.chunk.js"
+  ]
+}
