@@ -187,11 +187,11 @@ class App extends Component {
               {home}
             </div>
           ) : (
-              <div className='topPad'>
-                {pnavbar}
-                {display}
-              </div>
-            )}
+            <div className='topPad'>
+              {pnavbar}
+              {display}
+            </div>
+          )}
         </div >
       </Elements>
 
